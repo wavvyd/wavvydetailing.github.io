@@ -331,6 +331,8 @@
     transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .service-card::before {
@@ -392,6 +394,7 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    flex: 1;
   }
 
   .service-includes li {
@@ -449,13 +452,58 @@
   }
   .service-btn.outline:hover { border-color: var(--blue); color: var(--blue2); }
 
+  /* ── SIZE TABS ── */
+  .size-tabs {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .size-tab {
+    background: var(--s2);
+    border: 1px solid var(--border);
+    color: var(--dim);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  .size-tab:hover {
+    border-color: rgba(42,159,214,0.4);
+    color: var(--blue2);
+  }
+
+  .size-tab.active {
+    background: linear-gradient(135deg, var(--blue), var(--blue2));
+    border-color: transparent;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(42,159,214,0.35);
+  }
+
+  .size-tab-sub {
+    display: block;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+    margin-top: 2px;
+  }
+
   /* ── UPSELLS ── */
   .upsells-section {
     padding: 0 24px 100px;
   }
 
   .upsells-wrap {
-    max-width: 1000px;
+    max-width: 1100px;
     margin: 0 auto;
     background: var(--card);
     border: 1px solid var(--border);
@@ -474,7 +522,7 @@
 
   .upsells-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 10px;
   }
 
@@ -493,6 +541,11 @@
 
   .upsell-name { font-size: 13px; font-weight: 600; }
   .upsell-price { font-size: 13px; color: var(--blue2); font-weight: 700; white-space: nowrap; }
+
+  /* ── SERVICES GRID WIDER ── */
+  .services-grid {
+    max-width: 1100px !important;
+  }
 
   /* ── HOW IT WORKS ── */
   .how {
@@ -693,6 +746,7 @@
   </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#addons">Add-Ons</a></li>
     <li><a href="#how">How It Works</a></li>
     <li><a href="#area">Service Area</a></li>
     <li><a href="https://wavvydetailing.setmore.com/" target="_blank" class="nav-cta">Book Now</a></li>
@@ -707,7 +761,7 @@
     Your Car Deserves
     <span class="wave-text">Wavvy Clean.</span>
   </h1>
-  <p class="hero-sub">Professional mobile detailing that comes to you. We bring the products, the equipment, and the results — right to your driveway.</p>
+  <p class="hero-sub">Professional mobile detailing that comes to you. We bring the products, the equipment, and the results right to your driveway.</p>
   <div class="hero-buttons">
     <a href="https://wavvydetailing.setmore.com/" target="_blank" class="btn-primary">⚡ Book Your Detail</a>
     <a href="#services" class="btn-secondary">View Services →</a>
@@ -736,97 +790,79 @@
     <p class="section-sub">Every detail is done by hand with professional-grade products. No shortcuts.</p>
   </div>
 
+  <!-- Vehicle Size Tabs -->
+  <div class="size-tabs">
+    <button class="size-tab active" data-size="sedan" onclick="switchSize('sedan')">
+      🚗 Sedan / Small Car
+      <span class="size-tab-sub">Compact, Coupe, Standard</span>
+    </button>
+    <button class="size-tab" data-size="suv" onclick="switchSize('suv')">
+      🚙 SUV / Mid-Size
+      <span class="size-tab-sub">Crossover, Minivan, Mid-SUV</span>
+    </button>
+    <button class="size-tab" data-size="truck" onclick="switchSize('truck')">
+      🛻 Truck / Large Vehicle
+      <span class="size-tab-sub">Full-Size Truck, Large SUV, Van</span>
+    </button>
+  </div>
+
   <div class="services-grid">
 
-    <div class="service-card">
-      <div class="service-icon">🚿</div>
-      <div class="service-name">Basic Wash</div>
-      <div class="service-desc">Quick exterior refresh to keep your car looking clean between full details.</div>
-      <ul class="service-includes">
-        <li>Exterior hand wash</li>
-        <li>Window cleaning</li>
-        <li>Tire shine</li>
-        <li>Quick interior wipe</li>
-      </ul>
-      <div class="service-price">
-        <span class="price-from">from</span>
-        <span class="price-num">$75</span>
-      </div>
-      <a href="https://wavvydetailing.setmore.com/" target="_blank" class="service-btn outline">Book This</a>
-    </div>
-
+    <!-- Basic Detail -->
     <div class="service-card featured">
       <div class="featured-badge">Most Popular</div>
-      <div class="service-icon">✨</div>
-      <div class="service-name">Full Detail</div>
-      <div class="service-desc">Complete inside and out. This is the full Wavvy experience — your car will look showroom ready.</div>
+      <div class="service-icon">🚿</div>
+      <div class="service-name">Basic Detail</div>
+      <div class="service-desc">The perfect maintenance detail to keep your car fresh and clean.</div>
       <ul class="service-includes">
-        <li>Full interior vacuum & shampoo</li>
-        <li>Exterior wash & clay bar</li>
-        <li>Wax / paint sealant</li>
-        <li>Window treatment</li>
-        <li>Tire & trim dressing</li>
-        <li>Steam cleaning</li>
+        <li>Vacuum + wipe-down of full interior</li>
+        <li>Clean inside-out of all windows</li>
+        <li>Two-step exterior wash — touchless rinse + hand wash</li>
+        <li>Tires cleaned + tire shine applied</li>
       </ul>
       <div class="service-price">
         <span class="price-from">from</span>
-        <span class="price-num">$250</span>
+        <span class="price-num" id="price-basic">$75</span>
       </div>
       <a href="https://wavvydetailing.setmore.com/" target="_blank" class="service-btn">Book This</a>
     </div>
 
+    <!-- Ceramic Coating Package -->
     <div class="service-card">
+      <div class="featured-badge" style="display:none"></div>
       <div class="service-icon">💎</div>
-      <div class="service-name">Premium Detail</div>
-      <div class="service-desc">For luxury and high-end vehicles that deserve the best treatment possible.</div>
+      <div class="service-name">Ceramic Coating Package</div>
+      <div class="service-desc">Long-lasting paint protection that repels water, dirt, and UV damage for years.</div>
       <ul class="service-includes">
-        <li>Everything in Full Detail</li>
-        <li>Paint decontamination</li>
-        <li>Machine polish</li>
-        <li>Water spot removal</li>
-        <li>Odor elimination</li>
-        <li>Engine bay clean</li>
+        <li>Everything in Basic Detail</li>
+        <li>Iron decontamination treatment</li>
+        <li>Single-stage paint correction</li>
+        <li>Professional ceramic coating applied</li>
+        <li>Hydrophobic protection (2–3 year durability)</li>
       </ul>
       <div class="service-price">
         <span class="price-from">from</span>
-        <span class="price-num">$400</span>
+        <span class="price-num" id="price-ceramic">$499</span>
       </div>
-      <a href="https://wavvydetailing.setmore.com/" target="_blank" class="service-btn outline">Book This</a>
-    </div>
-
-    <div class="service-card">
-      <div class="service-icon">🔄</div>
-      <div class="service-name">Monthly Plan</div>
-      <div class="service-desc">Lock in regular maintenance and never drive a dirty car again. Priority scheduling included.</div>
-      <ul class="service-includes">
-        <li>2x basic washes per month</li>
-        <li>Priority booking</li>
-        <li>10% off all upgrades</li>
-        <li>Consistent results</li>
-      </ul>
-      <div class="service-price">
-        <span class="price-num">$120</span>
-        <span class="price-note">/month</span>
-      </div>
-      <a href="https://wavvydetailing.setmore.com/" target="_blank" class="service-btn outline">Get Started</a>
+      <a href="https://wavvydetailing.setmore.com/" target="_blank" class="service-btn">Book This</a>
     </div>
 
   </div>
 </section>
 
-<!-- UPSELLS -->
-<section class="upsells-section">
+<!-- ADD-ONS -->
+<section class="upsells-section" id="addons">
   <div class="upsells-wrap">
-    <div class="upsells-title">⚡ Add-On Services</div>
+    <div class="upsells-title">⚡ Additional Services — Add On to Any Package</div>
     <div class="upsells-grid">
-      <div class="upsell-item"><span class="upsell-name">Ceramic Coating</span><span class="upsell-price">+$150–300</span></div>
-      <div class="upsell-item"><span class="upsell-name">Paint Correction</span><span class="upsell-price">+$100–200</span></div>
-      <div class="upsell-item"><span class="upsell-name">Odor Elimination</span><span class="upsell-price">+$50–75</span></div>
-      <div class="upsell-item"><span class="upsell-name">Engine Bay Clean</span><span class="upsell-price">+$75</span></div>
-      <div class="upsell-item"><span class="upsell-name">Headlight Restore</span><span class="upsell-price">+$50</span></div>
-      <div class="upsell-item"><span class="upsell-name">Leather Condition</span><span class="upsell-price">+$40</span></div>
-      <div class="upsell-item"><span class="upsell-name">Pet Hair Removal</span><span class="upsell-price">+$40–75</span></div>
-      <div class="upsell-item"><span class="upsell-name">Water Spot Removal</span><span class="upsell-price">+$75–150</span></div>
+      <div class="upsell-item"><span class="upsell-name">Stain Removal</span><span class="upsell-price" data-base="75">+$75–125</span></div>
+      <div class="upsell-item"><span class="upsell-name">Light Scratch Removal / Paint Correction</span><span class="upsell-price" data-base="100">+$100–200</span></div>
+      <div class="upsell-item"><span class="upsell-name">Wax Treatment</span><span class="upsell-price" data-base="40">+$40–60</span></div>
+      <div class="upsell-item"><span class="upsell-name">Iron Decontamination</span><span class="upsell-price" data-base="60">+$60–90</span></div>
+      <div class="upsell-item"><span class="upsell-name">Headlight Restoration</span><span class="upsell-price" data-base="70">+$70</span></div>
+      <div class="upsell-item"><span class="upsell-name">Pet Hair Removal</span><span class="upsell-price" data-base="50">+$50–100</span></div>
+      <div class="upsell-item"><span class="upsell-name">Engine Bay Clean</span><span class="upsell-price" data-base="80">+$80–120</span></div>
+      <div class="upsell-item"><span class="upsell-name">Interior Ceramic Coating</span><span class="upsell-price" data-base="150">+$150–250</span></div>
     </div>
   </div>
 </section>
@@ -889,8 +925,8 @@
     <p class="cta-sub">Book online in 2 minutes. We bring everything — you just unlock your car. Serving San Jose and the Bay Area every weekend.</p>
     <a href="https://wavvydetailing.setmore.com/" target="_blank" class="btn-primary" style="font-size:17px; padding: 18px 40px;">⚡ Book Your Detail Now</a>
     <div class="social-links">
-      <a href="https://instagram.com/wavvydetailing" target="_blank" class="social-link">📸 @wavvydetailing</a>
-      <a href="https://tiktok.com/@wavvydetailing" target="_blank" class="social-link">🎵 TikTok</a>
+      <a href="https://www.instagram.com/wavvydetailing" target="_blank" class="social-link">📸 @wavvydetailing</a>
+      <a href="https://www.tiktok.com/@wavvydetailing" target="_blank" class="social-link">🎵 TikTok</a>
     </div>
   </div>
 </section>
@@ -905,6 +941,62 @@ const logoB64 = '/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQ
 const logoSrc = 'data:image/png;base64,' + logoB64;
 document.querySelectorAll('img[src="LOGO_PLACEHOLDER"]').forEach(img => {
   img.src = logoSrc;
+});
+
+// Size tab pricing
+const prices = {
+  sedan:  { basic: '$75',  ceramic: '$499' },
+  suv:    { basic: '$85',  ceramic: '$649' },
+  truck:  { basic: '$95',  ceramic: '$799' }
+};
+
+function switchSize(size) {
+  // Update tabs
+  document.querySelectorAll('.size-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`[data-size="${size}"]`).classList.add('active');
+
+  // Update prices with a quick fade
+  const p = prices[size];
+  ['basic','ceramic'].forEach(key => {
+    const el = document.getElementById(`price-${key}`);
+    if (el) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-6px)';
+      setTimeout(() => {
+        el.textContent = p[key];
+        el.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, 180);
+    }
+  });
+}
+
+// Set initial transition styles
+document.querySelectorAll('#price-basic, #price-ceramic').forEach(el => {
+  el.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// Smooth scroll for all anchor links
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 });
 
 // Smooth scroll + nav highlight
